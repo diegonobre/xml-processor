@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Person
@@ -66,14 +67,8 @@ class Person
     /**
      * @var string
      *
-     * @ORM\Column(name="xml_file_origin", type="string", length=255, nullable=true)
-     *
      * @Assert\NotBlank(message="Please, upload a XML file.")
-     * @Assert\File(
-     *     maxSize = "20M",
-     *     mimeTypes = {"text/xml"},
-     *     mimeTypesMessage = "Please upload a valid XML file"
-     * )
+     * @Assert\File(mimeTypes={ "text/xml", "application/xml" })
      */
     private $xmlFileName;
 
