@@ -20,7 +20,7 @@
     <div class="container">
         <ul class="nav navbar-nav">
             <li>
-                <a id="home" href="{{ path('homepage') }}" class="btn btn-primary" role="button">Home</a>
+                <a id="back" href="{{ path('homepage') }}" class="btn btn-primary" role="button"><< back to home</a>
             </li>
         </ul>
     </div>
@@ -29,7 +29,18 @@
 
 <!-- Page Content -->
 <div class="container">
-    {% block body %}{% endblock %}
+    {% block body %}
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="well">
+                    {% for error in errors %}
+                        <li>{{ error.message }}</li>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+    {% endblock %}
     <hr>
     <!-- Footer -->
     <footer>
