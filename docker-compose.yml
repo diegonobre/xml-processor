@@ -1,0 +1,21 @@
+web:
+  build: .
+  links:
+    - mysql:mysql
+  ports:
+    - "80:80"
+    - "443:443"
+  volumes:
+    - ./:/var/www/html
+  environment:
+    SYMFONY_ENV: dev
+
+mysql:
+  image: mysql
+  ports:
+    - "3306:3306"
+  environment:
+    MYSQL_ROOT_PASSWORD: password
+    MYSQL_USER: usr_app
+    MYSQL_PASSWORD: password
+    MYSQL_DATABASE: xml_processor
