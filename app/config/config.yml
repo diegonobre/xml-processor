@@ -64,3 +64,18 @@ swiftmailer:
     username: '%mailer_user%'
     password: '%mailer_password%'
     spool: { type: memory }
+
+# REST configuration
+nelmio_api_doc:
+    name: 'XML Processor API Documentation'
+
+fos_rest:
+    routing_loader:
+        default_format: json                            # All responses should be JSON formated
+        include_format: false                           # We do not include format in request, so that all responses
+                                                        # will eventually be JSON formated
+    format_listener:
+        rules:
+            - { priorities: ['json', 'xml'], fallback_format: json, prefer_extension: false }
+    view:
+        view_response_listener: true
