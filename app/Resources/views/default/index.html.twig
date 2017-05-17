@@ -1,14 +1,29 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+<!-- person row -->
 <div class="row">
     <div class="col-lg-12">
         <h2>Person XML</h2>
         <div class="well">
             <h4>Choose your file:</h4>
-            {{ form_start(form) }}
-            {{ form_widget(form) }}
-            {{ form_end(form) }}
+            {{ form_start(person_form) }}
+            {{ form_widget(person_form) }}
+            {{ form_end(person_form) }}
+        </div>
+    </div>
+</div>
+<!-- /.row -->
+
+<!-- ship order row -->
+<div class="row">
+    <div class="col-lg-12">
+        <h2>Ship order XML</h2>
+        <div class="well">
+            <h4>Choose your file:</h4>
+            {{ form_start(shiporder_form) }}
+            {{ form_widget(shiporder_form) }}
+            {{ form_end(shiporder_form) }}
         </div>
     </div>
 </div>
