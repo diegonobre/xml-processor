@@ -13,3 +13,4 @@
 /node_modules
 /web/dist/css
 /web/dist/js
+/web/uploads/files/*.xml
