@@ -8,10 +8,17 @@ use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 /**
- * @Route("/api")
+ * @Route("/")
  */
 class ApiController extends FOSRestController
 {
+    /**
+     * @Route("/api", name="api_home")
+     */
+    public function indexAction()
+    {
+        return $this->redirect('api/doc');
+    }
     /**
      * Returns ONE Person from XMLProcessor by ID
      *
@@ -47,7 +54,7 @@ class ApiController extends FOSRestController
     {
         $people = $this->getDoctrine()
             ->getRepository('AppBundle:Person')
-            ->findBy(array(), array('personname' => 'asc'));
+            ->findBy(array(), array('name' => 'asc'));
 
         $data = array("people" => $people);
         $view = $this->view($data);

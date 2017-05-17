@@ -74,8 +74,22 @@ fos_rest:
         default_format: json                            # All responses should be JSON formated
         include_format: false                           # We do not include format in request, so that all responses
                                                         # will eventually be JSON formated
-    format_listener:
-        rules:
-            - { priorities: ['json', 'xml'], fallback_format: json, prefer_extension: false }
     view:
         view_response_listener: true
+
+fos_user:
+    db_driver: orm # other valid values are 'mongodb' and 'couchdb'
+    firewall_name: api
+    user_class: AppBundle\Entity\User
+    from_email:
+        address: "noreply@gmail.com"
+        sender_name: "Sender Name"
+
+fos_oauth_server:
+    db_driver: orm       # Drivers available: orm, mongodb, or propel
+    client_class:        AppBundle\Entity\Client
+    access_token_class:  AppBundle\Entity\AccessToken
+    refresh_token_class: AppBundle\Entity\RefreshToken
+    auth_code_class:     AppBundle\Entity\AuthCode
+    service:
+        user_provider: fos_user.user_provider.username

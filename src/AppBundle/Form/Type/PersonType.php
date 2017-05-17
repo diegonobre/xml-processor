@@ -10,8 +10,12 @@ class PersonType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        global $kernel;
+        $action = ($kernel->getEnvironment() == 'dev')
+            ? '/app_dev.php/person/create' : '/person/create';
+
         $builder
-            ->setAction('/person/create')
+            ->setAction($action)
             ->setMethod('POST')
             ->add('xmlFileName', FileType::class, array(
                     'label' => false,
